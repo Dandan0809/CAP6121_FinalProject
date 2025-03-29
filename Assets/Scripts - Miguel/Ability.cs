@@ -1,19 +1,17 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public abstract class Ability : MonoBehaviour
 {
-    protected int abilityIndex;
     public Cooldown cooldown;
     [SerializeField] protected int manaCost;
     [SerializeField] protected Sprite abilityImg;
     [SerializeField] protected Image icon;
     [SerializeField] protected TMP_Text cooldownDisplay;
 
-    public abstract int OnCast(int currentMana, Transform pos, ResourceBarHandler manaBar);
+    public abstract void OnCast();
 
     public IEnumerator UpdateSprite()
     {
