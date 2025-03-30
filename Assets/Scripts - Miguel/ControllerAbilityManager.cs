@@ -13,6 +13,8 @@ public class ControllerAbilityManager : MonoBehaviour
     public Ability blast;
     public Ability placement;
 
+    [SerializeField] private bool isPlacing = false;
+
     private void Start()
     {
         blastAbility.action.performed += _ => CastFireBlast();
@@ -21,11 +23,21 @@ public class ControllerAbilityManager : MonoBehaviour
 
     public void CastFireBlast()
     {
-        blast.OnCast();
+        if (!isPlacing)
+            blast.OnCast();
     }
 
     public void CastPlacement()
     {
-        placement.OnCast();
+        if (!isPlacing)
+        {
+            placement.OnCast();
+            UpdatePlacement();
+        }
+    }
+
+    public void UpdatePlacement()
+    {
+        isPlacing = !isPlacing;
     }
 }
