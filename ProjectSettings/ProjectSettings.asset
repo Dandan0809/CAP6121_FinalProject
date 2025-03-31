@@ -161,7 +161,9 @@ PlayerSettings:
   resetResolutionOnWindowResize: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
-  applicationIdentifier: {}
+  applicationIdentifier:
+    Android: com.DefaultCompany.CAP6121_FinalProject
+    Standalone: com.DefaultCompany.CAP6121-FinalProject
   buildNumber:
     Standalone: 0
     VisionOS: 0

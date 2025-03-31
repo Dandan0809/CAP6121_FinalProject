@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,16 +28,15 @@ public class IceSpike : Ability
 
     private IEnumerator PlaceAbility()
     {
-
         GameObject indicator;
         RaycastHit hit;
         if (Physics.Raycast(hand.position, hand.forward, out hit, 15, layermask))
         {
-            indicator = Instantiate(placementFX, hit.point, Quaternion.identity);
+            indicator = Instantiate(placementFX, hit.point, placementFX.transform.rotation);
         }
         else
         {
-            indicator = Instantiate(placementFX, hand.position + (15 * hand.forward), Quaternion.identity);
+            indicator = Instantiate(placementFX, hand.position + (15 * hand.forward), placementFX.transform.rotation);
         }
 
         bool isPlacing = true;

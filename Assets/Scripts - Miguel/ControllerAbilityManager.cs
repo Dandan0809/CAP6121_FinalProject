@@ -18,18 +18,18 @@ public class ControllerAbilityManager : MonoBehaviour
     private void Start()
     {
         blastAbility.action.performed += _ => CastFireBlast();
-        placementAbility.action.performed -= _ => CastPlacement();
+        placementAbility.action.performed += _ => CastPlacement();
     }
 
     public void CastFireBlast()
     {
-        if (!isPlacing)
+        if (!isPlacing && !blast.cooldown.IsCoolingDown)
             blast.OnCast();
     }
 
     public void CastPlacement()
     {
-        if (!isPlacing)
+        if (!isPlacing && !placement.cooldown.IsCoolingDown)
         {
             placement.OnCast();
             UpdatePlacement();

@@ -11,5 +11,6 @@ public class FireBlast : Ability
     public override void OnCast()
     {
         blastEffect.Play();
+        cooldown.StartCooldown();
     }
 }
