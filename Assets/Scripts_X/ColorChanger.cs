@@ -14,6 +14,8 @@ public class ColorChanger : MonoBehaviour
     {
         var colorString = values[0];
         var shapeString = values[1];
+        Debug.Log(colorString);
+        Debug.Log(shapeString); 
 
         if (ColorUtility.TryParseHtmlString(colorString, out var color))
         {

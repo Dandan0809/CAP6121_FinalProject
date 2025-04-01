@@ -476,7 +476,7 @@ GameObject:
   - component: {fileID: 571357460}
   - component: {fileID: 571357459}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -651,7 +651,7 @@ GameObject:
   - component: {fileID: 1025319771}
   - component: {fileID: 1025319770}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -756,7 +756,7 @@ GameObject:
   - component: {fileID: 1126444163}
   - component: {fileID: 1126444162}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -863,7 +863,7 @@ GameObject:
   - component: {fileID: 1229438377}
   - component: {fileID: 1229438376}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
