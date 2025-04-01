@@ -6,10 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class GolemEnemy : MonoBehaviour
 {
-    // public Hitbox[] rightArmHitboxes;
-    // public Hitbox[] leftArmHitboxes;
-    // private Hitbox[] currentHitboxes;
-    private float attackRange = 3f;
+    private float attackRange = 1f;
 
 
     private float timeBetweenPathUpdates = .3f;
@@ -26,7 +23,7 @@ public class GolemEnemy : MonoBehaviour
         Attacking,
     }
 
-    private State state;
+    [SerializeField] private State state;
 
     private void Start()
     {
@@ -68,10 +65,16 @@ public class GolemEnemy : MonoBehaviour
                     lookPos.y = 0;
                     var rotation = Quaternion.LookRotation(lookPos);
                     transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 4f);
+                    animator.SetFloat("Speed", agent.velocity.magnitude);
                     break;
             }
-            
         }
+    }
+
+    public void OnGrab()
+    {
+        isAirborne = true;
+
     }
 
     private void OnCollisionEnter(Collision collision)
