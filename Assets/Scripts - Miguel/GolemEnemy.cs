@@ -74,15 +74,21 @@ public class GolemEnemy : MonoBehaviour
     public void OnGrab()
     {
         isAirborne = true;
-
+        animator.SetTrigger("Airborne");
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (isAirborne && collision.transform.CompareTag("Ground"))
         {
-            isAirborne = false;
-            agent.enabled = true;
+            transform.parent = null;
+            animator.SetTrigger("HasLanded");
         }
+    }
+
+    public void EnableAgent()
+    {
+        isAirborne = false;
+        agent.enabled = true;
     }
 }

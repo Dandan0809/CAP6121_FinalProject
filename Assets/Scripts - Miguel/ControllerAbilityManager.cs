@@ -7,11 +7,12 @@ using UnityEngine.XR.Interaction.Toolkit.Inputs;
 public class ControllerAbilityManager : MonoBehaviour
 {
     public InputActionReference blastAbility;
-    // public InputActionReference grabAbility; Grabbing can be done with grab interactables I guess?
+    public InputActionReference grabAbility;
     public InputActionReference placementAbility;
 
     public Ability blast;
     public Ability placement;
+    public Ability grab;
 
     [SerializeField] private bool isPlacing = false;
 
@@ -19,6 +20,7 @@ public class ControllerAbilityManager : MonoBehaviour
     {
         blastAbility.action.performed += _ => CastFireBlast();
         placementAbility.action.performed += _ => CastPlacement();
+        grabAbility.action.performed += _ => CastGrab();
     }
 
     public void CastFireBlast()
@@ -33,6 +35,14 @@ public class ControllerAbilityManager : MonoBehaviour
         {
             placement.OnCast();
             UpdatePlacement();
+        }
+    }
+
+    public void CastGrab()
+    {
+        if (!isPlacing && !grab.cooldown.IsCoolingDown)
+        {
+            grab.OnCast();
         }
     }
 

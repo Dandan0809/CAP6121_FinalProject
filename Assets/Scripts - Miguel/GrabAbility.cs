@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class GrabAbility : Ability
 {
     [SerializeField] private GameObject grabFX;
-    [SerializeField] private GameObject placementFX;
     [SerializeField] private LayerMask layermask;
 
     public InputActionReference placementAbility;
@@ -35,6 +34,7 @@ public class GrabAbility : Ability
             hit.transform.parent = hand.transform;
             enemyBody = hit.transform.gameObject.GetComponent<Rigidbody>();
             controllerAbilityManager.UpdatePlacement();
+            enemyBody.GetComponent<GolemEnemy>().OnGrab();
         }
         else
         {

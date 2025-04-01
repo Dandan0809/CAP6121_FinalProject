@@ -240,17 +240,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Forest_Golem_1_PA
       objectReference: {fileID: 0}
+    - target: {fileID: 100080, guid: 4a36c659010ba3f47a0a9ba312712507, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400080, guid: 4a36c659010ba3f47a0a9ba312712507, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 400080, guid: 4a36c659010ba3f47a0a9ba312712507, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 400080, guid: 4a36c659010ba3f47a0a9ba312712507, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.3
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 400080, guid: 4a36c659010ba3f47a0a9ba312712507, type: 3}
       propertyPath: m_LocalPosition.x
@@ -262,7 +266,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400080, guid: 4a36c659010ba3f47a0a9ba312712507, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.09
+      value: -12.03
       objectReference: {fileID: 0}
     - target: {fileID: 400080, guid: 4a36c659010ba3f47a0a9ba312712507, type: 3}
       propertyPath: m_LocalRotation.w
@@ -396,8 +400,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.1307948, y: 3.0778594, z: 1}
+  m_Center: {x: 0.106012225, y: 1.604773, z: 0}
 --- !u!54 &537478101
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -440,7 +444,7 @@ GameObject:
   - component: {fileID: 943835157}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -527,8 +531,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1781,6 +1785,7 @@ GameObject:
   - component: {fileID: 2027922585}
   - component: {fileID: 2027922584}
   - component: {fileID: 2027922586}
+  - component: {fileID: 2027922587}
   m_Layer: 0
   m_Name: Ability Manager
   m_TagString: Untagged
@@ -1835,9 +1840,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blastAbility: {fileID: -5220241439376577480, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  grabAbility: {fileID: -5640710623331263274, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   placementAbility: {fileID: -7413917333220501941, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   blast: {fileID: 2027922584}
   placement: {fileID: 2027922586}
+  grab: {fileID: 2027922587}
   isPlacing: 0
 --- !u!114 &2027922586
 MonoBehaviour:
@@ -1863,6 +1870,30 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   placementAbility: {fileID: -5220241439376577480, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  hand: {fileID: 531812726}
+--- !u!114 &2027922587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027922582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be2b675e6361362498d16c0e02681708, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown:
+    cooldownTime: 10
+  manaCost: 0
+  abilityImg: {fileID: 0}
+  icon: {fileID: 0}
+  cooldownDisplay: {fileID: 0}
+  grabFX: {fileID: 0}
+  layermask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  placementAbility: {fileID: -5640710623331263274, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   hand: {fileID: 531812726}
 --- !u!1 &2096320631
 GameObject:
