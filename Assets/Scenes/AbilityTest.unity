@@ -1688,7 +1688,7 @@ MonoBehaviour:
   abilityImg: {fileID: 0}
   icon: {fileID: 0}
   cooldownDisplay: {fileID: 0}
-  grabFX: {fileID: 0}
+  grabFX: {fileID: 1289543790355709915, guid: 1aeebc3333808d645acd569082564e2c, type: 3}
   layermask:
     serializedVersion: 2
     m_Bits: 4294967295
