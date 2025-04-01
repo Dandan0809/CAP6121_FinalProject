@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEngine.GraphicsBuffer;
 
 public class GolemEnemy : MonoBehaviour
 {
-    private float attackRange = 1f;
-
+    public float rotationSpeed = 4f;
+    public float attackRange = 1.5f;
 
     private float timeBetweenPathUpdates = .3f;
     private float currentTimeBetween = 0f;
@@ -74,7 +73,16 @@ public class GolemEnemy : MonoBehaviour
     public void OnGrab()
     {
         isAirborne = true;
+        agent.enabled = false;
         animator.SetTrigger("Airborne");
+        StartCoroutine(DisableAndReenableCollider());
+    }
+
+    IEnumerator DisableAndReenableCollider()
+    {
+        GetComponent<Collider>().enabled = false;
+        yield return new WaitForSeconds(0.5f);
+        GetComponent<Collider>().enabled = true;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -82,6 +90,7 @@ public class GolemEnemy : MonoBehaviour
         if (isAirborne && collision.transform.CompareTag("Ground"))
         {
             transform.parent = null;
+            transform.position = new Vector3 (transform.position.x, 0, transform.position.z);
             animator.SetTrigger("HasLanded");
         }
     }
@@ -90,5 +99,27 @@ public class GolemEnemy : MonoBehaviour
     {
         isAirborne = false;
         agent.enabled = true;
+        GetComponent<Rigidbody>().isKinematic = true;
+    }
+
+    public IEnumerator RotateTowardsTarget()
+    {
+        while (true)
+        {
+            Vector3 direction = player.transform.position - transform.position;
+            if (direction.magnitude > 0.01f) // Prevents unnecessary updates when very close
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+
+                // Gradually move the X rotation toward 0
+                Vector3 currentEuler = transform.rotation.eulerAngles;
+                float newX = Mathf.LerpAngle(currentEuler.x, 0f, Time.deltaTime * rotationSpeed);
+
+                // Apply new rotation with the adjusted X
+                transform.rotation = Quaternion.Euler(newX, currentEuler.y, currentEuler.z);
+            }
+            yield return null; // Wait for the next frame
+        }
     }
 }

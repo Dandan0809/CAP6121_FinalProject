@@ -32,11 +32,13 @@ public class IceSpike : Ability
         RaycastHit hit;
         if (Physics.Raycast(hand.position, hand.forward, out hit, 15, layermask))
         {
-            indicator = Instantiate(placementFX, hit.point, placementFX.transform.rotation);
+            Vector3 elevatedPosition = hit.point + new Vector3(0, 0.1f, 0); // Add 0.1 to Y-axis
+            indicator = Instantiate(placementFX, elevatedPosition, placementFX.transform.rotation);
         }
         else
         {
-            indicator = Instantiate(placementFX, hand.position + (15 * hand.forward), placementFX.transform.rotation);
+Vector3 elevatedPosition = hand.position + (15 * hand.forward) + new Vector3(0, 0.1f, 0); // Add 0.1 to Y-axis
+    indicator = Instantiate(placementFX, elevatedPosition, placementFX.transform.rotation);
         }
 
         bool isPlacing = true;
@@ -47,7 +49,7 @@ public class IceSpike : Ability
         {
             if (Physics.Raycast(hand.position, hand.forward, out hit, 15, layermask))
             {
-                indicator.transform.position = hit.point;
+                indicator.transform.position = hit.point + new Vector3(0, 0.1f, 0);
                 if (placementAbility.action.WasPerformedThisFrame())
                 {
                     Destroy(indicator);
@@ -58,7 +60,7 @@ public class IceSpike : Ability
             else
             {
                 hoveringIndicatorPosition = (15 * hand.transform.forward);
-                indicator.transform.position = new Vector3(hand.position.x + hoveringIndicatorPosition.x, 0, hand.position.z + hoveringIndicatorPosition.z);
+                indicator.transform.position = new Vector3(hand.position.x + hoveringIndicatorPosition.x, 0.1f, hand.position.z + hoveringIndicatorPosition.z);
                 if (placementAbility.action.WasPerformedThisFrame())
                 {
                     Instantiate(spikes, indicator.transform.position, Quaternion.identity);
