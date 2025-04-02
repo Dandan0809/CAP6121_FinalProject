@@ -15,6 +15,7 @@ public class GolemEnemy : MonoBehaviour
     private NavMeshAgent agent;
     private Animator animator;
     private bool isAirborne = false;
+    public bool isDead = false;
 
     private enum State
     {
@@ -33,39 +34,42 @@ public class GolemEnemy : MonoBehaviour
 
     private void Update()
     {
-        if (player == null)
+        if (!isDead)
         {
-            player = GameObject.FindWithTag("Player");
-        }
-        currentTimeBetween += Time.deltaTime;
-        if (currentTimeBetween >= timeBetweenPathUpdates)
-        {
-            currentTimeBetween = 0f;
-        }
-        if (!isAirborne)
-        {
-            // Get the current velocity of the agent
-            switch (state)
+            if (player == null)
             {
-                default:
-                case State.ChaseTarget:
-                    animator.SetFloat("Speed", agent.velocity.magnitude);
-                    if (currentTimeBetween == 0f)
-                        agent.SetDestination(player.transform.position);
-                    if (Vector3.Distance(transform.position, player.transform.position) < attackRange)
-                    {
-                        agent.isStopped = true;
-                        animator.SetTrigger("Attack1");
-                        state = State.Attacking;
-                    }
-                    break;
-                case State.Attacking:
-                    var lookPos = player.transform.position - transform.position;
-                    lookPos.y = 0;
-                    var rotation = Quaternion.LookRotation(lookPos);
-                    transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 4f);
-                    animator.SetFloat("Speed", agent.velocity.magnitude);
-                    break;
+                player = GameObject.FindWithTag("Player");
+            }
+            currentTimeBetween += Time.deltaTime;
+            if (currentTimeBetween >= timeBetweenPathUpdates)
+            {
+                currentTimeBetween = 0f;
+            }
+            if (!isAirborne)
+            {
+                // Get the current velocity of the agent
+                switch (state)
+                {
+                    default:
+                    case State.ChaseTarget:
+                        animator.SetFloat("Speed", agent.velocity.magnitude);
+                        if (currentTimeBetween == 0f)
+                            agent.SetDestination(player.transform.position);
+                        if (Vector3.Distance(transform.position, player.transform.position) < attackRange)
+                        {
+                            agent.isStopped = true;
+                            animator.SetTrigger("Attack1");
+                            state = State.Attacking;
+                        }
+                        break;
+                    case State.Attacking:
+                        var lookPos = player.transform.position - transform.position;
+                        lookPos.y = 0;
+                        var rotation = Quaternion.LookRotation(lookPos);
+                        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 4f);
+                        animator.SetFloat("Speed", agent.velocity.magnitude);
+                        break;
+                }
             }
         }
     }
@@ -120,6 +124,17 @@ public class GolemEnemy : MonoBehaviour
                 transform.rotation = Quaternion.Euler(newX, currentEuler.y, currentEuler.z);
             }
             yield return null; // Wait for the next frame
+        }
+    }
+
+    public void OnDeath()
+    {
+        if (!isDead)
+        {
+            isDead = true;
+            animator.SetTrigger("HasDied");
+            agent.enabled = false;
+            Destroy(gameObject, 5f);
         }
     }
 }

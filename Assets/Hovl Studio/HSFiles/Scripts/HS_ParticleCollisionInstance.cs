@@ -23,6 +23,9 @@ public class HS_ParticleCollisionInstance : MonoBehaviour
     }
     void OnParticleCollision(GameObject other)
     {      
+        if (other.GetComponent<GolemEnemy>() != null) { 
+            other.GetComponent<GolemEnemy>().OnDeath();
+        }
         int numCollisionEvents = part.GetCollisionEvents(other, collisionEvents);     
         for (int i = 0; i < numCollisionEvents; i++)
         {

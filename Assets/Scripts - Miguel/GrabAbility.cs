@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -32,11 +33,18 @@ public class GrabAbility : Ability
         Rigidbody enemyBody;
         if (Physics.Raycast(hand.position, hand.forward, out hit, 15, layermask))
         {
-            hit.transform.parent = hand.transform;
-            enemyBody = hit.transform.gameObject.GetComponent<Rigidbody>();
-            controllerAbilityManager.UpdatePlacement();
-            enemyBody.GetComponent<GolemEnemy>().OnGrab();
-            enemyVFXObject = Instantiate(grabFX, enemyBody.transform);
+            if (hit.transform.gameObject.GetComponent<GolemEnemy>() && !hit.transform.gameObject.GetComponent<GolemEnemy>().isDead)
+            {
+                hit.transform.parent = hand.transform;
+                enemyBody = hit.transform.gameObject.GetComponent<Rigidbody>();
+                controllerAbilityManager.UpdatePlacement();
+                enemyBody.GetComponent<GolemEnemy>().OnGrab();
+                enemyVFXObject = Instantiate(grabFX, enemyBody.transform);
+            }
+            else
+            {
+                yield break;
+            }
         }
         else
         {
