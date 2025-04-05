@@ -14,6 +14,8 @@ public class ControllerAbilityManager : MonoBehaviour
     public Ability placement;
     public Ability grab;
 
+    public int healthPoints = 3;
+
     [SerializeField] private bool isPlacing = false;
 
     private void Start()

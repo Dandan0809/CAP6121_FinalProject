@@ -7,7 +7,6 @@ public abstract class Ability : MonoBehaviour
 {
     public Cooldown cooldown;
     [SerializeField] protected int manaCost;
-    [SerializeField] protected Sprite abilityImg;
     [SerializeField] protected Image icon;
     [SerializeField] protected TMP_Text cooldownDisplay;
 
@@ -26,14 +25,4 @@ public abstract class Ability : MonoBehaviour
         cooldownDisplay.text = "";
         cooldownDisplay.enabled = false;
     }
-
-    public void SetIconValues(GameObject iconObject)
-    {
-        icon = iconObject.GetComponent<Image>();
-        icon.sprite = abilityImg;
-        cooldownDisplay = icon.GetComponentInChildren<TMP_Text>(true);
-        icon.color = Color.white;
-    }
-
-    public Sprite GetSprite { get { return abilityImg; } }
 }

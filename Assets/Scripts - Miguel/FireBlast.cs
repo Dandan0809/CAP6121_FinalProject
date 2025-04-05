@@ -22,6 +22,7 @@ public class FireBlast : Ability
         {
             rechargeQueue.Dequeue();
             currentCharges = Mathf.Min(currentCharges + 1, maxCharges);
+            icon.color = Color.white;
         }
     }
 
@@ -34,8 +35,11 @@ public class FireBlast : Ability
             // Start individual cooldown timer (but not overriding main Cooldown timer logic)
             rechargeQueue.Enqueue(Time.time + cooldown.TimeLeft()); // Time.time + cooldown duration
             cooldown.StartCooldown(); // We can keep this if you want to expose the "general cooldown"
-
             currentCharges -= 1;
+            if (currentCharges == 0)
+            {
+                StartCoroutine(UpdateSprite());
+            }
         }
     }
 }

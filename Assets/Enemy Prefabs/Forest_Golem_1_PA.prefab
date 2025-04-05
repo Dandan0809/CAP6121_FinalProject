@@ -30,15 +30,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400080, guid: 4a36c659010ba3f47a0a9ba312712507, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.18
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400080, guid: 4a36c659010ba3f47a0a9ba312712507, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00000047683716
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400080, guid: 4a36c659010ba3f47a0a9ba312712507, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.98
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400080, guid: 4a36c659010ba3f47a0a9ba312712507, type: 3}
       propertyPath: m_LocalRotation.w
@@ -98,6 +98,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100064, guid: 4a36c659010ba3f47a0a9ba312712507, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4897169651068286409}
+    - targetCorrespondingSourceObject: {fileID: 100064, guid: 4a36c659010ba3f47a0a9ba312712507, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9144455716297902880}
   m_SourcePrefab: {fileID: 100100000, guid: 4a36c659010ba3f47a0a9ba312712507, type: 3}
 --- !u!1 &5859373845442489797 stripped
 GameObject:
@@ -119,12 +122,24 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.5113146, y: 0.7316376, z: 0.41214055}
   m_Center: {x: -0.255658, y: -0.013869346, z: -0.025683824}
+--- !u!114 &9144455716297902880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5859373845442489797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40239ba0cbd28c04a8d8b89c686238e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5859373845442489813 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100080, guid: 4a36c659010ba3f47a0a9ba312712507, type: 3}

@@ -17,6 +17,7 @@ public class GolemEnemy : MonoBehaviour
     private bool isAirborne = false;
     public bool isDead = false;
 
+    private EnemySpawner enemySpawner;
     private enum State
     {
         ChaseTarget,
@@ -28,6 +29,7 @@ public class GolemEnemy : MonoBehaviour
     private void Start()
     {
         state = State.ChaseTarget;
+        enemySpawner = FindObjectOfType<EnemySpawner>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
     }
@@ -99,6 +101,11 @@ public class GolemEnemy : MonoBehaviour
         }
     }
 
+    public void RePunch()
+    {
+        state = State.ChaseTarget;
+    }
+
     public void EnableAgent()
     {
         isAirborne = false;
@@ -134,6 +141,7 @@ public class GolemEnemy : MonoBehaviour
             isDead = true;
             animator.SetTrigger("HasDied");
             agent.enabled = false;
+            enemySpawner.EnemyDied();
             Destroy(gameObject, 5f);
         }
     }

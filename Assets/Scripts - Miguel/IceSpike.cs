@@ -72,5 +72,6 @@ Vector3 elevatedPosition = hand.position + (15 * hand.forward) + new Vector3(0, 
         }
         controllerAbilityManager.UpdatePlacement();
         cooldown.StartCooldown();
+        StartCoroutine(UpdateSprite());
     }
 }

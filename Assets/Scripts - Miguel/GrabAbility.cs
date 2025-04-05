@@ -78,5 +78,6 @@ public class GrabAbility : Ability
         }
         controllerAbilityManager.UpdatePlacement();
         cooldown.StartCooldown();
+        StartCoroutine(UpdateSprite());
     }
 }
