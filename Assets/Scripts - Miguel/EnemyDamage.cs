@@ -8,7 +8,7 @@ public class EnemyDamage : MonoBehaviour
     {
         if (other.GetComponent<ControllerAbilityManager>())
         {
-            other.GetComponent<ControllerAbilityManager>().healthPoints -= 1;
+            other.GetComponent<ControllerAbilityManager>().TakeDamage();
         }
     }
 }

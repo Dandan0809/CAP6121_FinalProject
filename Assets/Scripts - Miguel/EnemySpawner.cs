@@ -29,6 +29,7 @@ public class EnemySpawner : MonoBehaviour
     private float elapsedTime = 0f;
     private List<GameObject> activeEnemies = new List<GameObject>();
     private Coroutine spawnCoroutine;
+    private Coroutine timerCoroutine;
 
     private void Start()
     {
@@ -40,7 +41,7 @@ public class EnemySpawner : MonoBehaviour
 
         remainingTime = totalSpawnTime;
         spawnCoroutine = StartCoroutine(SpawnEnemies());
-        StartCoroutine(CountdownTimer());
+        timerCoroutine = StartCoroutine(CountdownTimer());
     }
 
     private IEnumerator SpawnEnemies()
@@ -55,6 +56,7 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSeconds(currentInterval);
             elapsedTime += currentInterval;
         }
+        DespawnAllEnemies();
     }
 
     private IEnumerator CountdownTimer()
@@ -102,6 +104,13 @@ public class EnemySpawner : MonoBehaviour
     /// </summary>
     public void DespawnAllEnemies()
     {
+
+        if (spawnCoroutine != null)
+            StopCoroutine(spawnCoroutine);
+
+        if (timerCoroutine != null)
+            StopCoroutine(timerCoroutine);
+
         foreach (GameObject enemy in activeEnemies)
         {
             if (enemy != null)
@@ -109,12 +118,12 @@ public class EnemySpawner : MonoBehaviour
         }
         activeEnemies.Clear();
 
-        // Optional: Stop spawning if you want to fully end the process
-        if (spawnCoroutine != null)
-        {
-            StopCoroutine(spawnCoroutine);
-        }
-
         elapsedTime = 0f;
+    }
+
+    public void EndGame()
+    {
+        DespawnAllEnemies();
+        countdownText.text = "You lose";
     }
 }

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class AbilityDamage : MonoBehaviour
 {
-    private void OnParticleCollision(GameObject other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<GolemEnemy>() != null)
+        if (other.gameObject.GetComponent<GolemEnemy>() != null)
         {
-            other.GetComponent<GolemEnemy>().OnDeath();
+            other.gameObject.GetComponent<GolemEnemy>().OnDeath();
         }
     }
 }

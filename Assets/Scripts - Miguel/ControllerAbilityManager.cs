@@ -15,6 +15,8 @@ public class ControllerAbilityManager : MonoBehaviour
     public Ability grab;
 
     public int healthPoints = 3;
+    public GameObject[] hpImages;
+    public EnemySpawner enemySpawner;
 
     [SerializeField] private bool isPlacing = false;
 
@@ -27,7 +29,7 @@ public class ControllerAbilityManager : MonoBehaviour
 
     public void CastFireBlast()
     {
-        if (!isPlacing && !blast.cooldown.IsCoolingDown)
+        if (!isPlacing)
             blast.OnCast();
     }
 
@@ -51,5 +53,15 @@ public class ControllerAbilityManager : MonoBehaviour
     public void UpdatePlacement()
     {
         isPlacing = !isPlacing;
+    }
+
+    public void TakeDamage()
+    {
+        healthPoints -= 1;
+        hpImages[healthPoints].SetActive(false);
+        if (healthPoints <= 0)
+        {
+            enemySpawner.EndGame();
+        }
     }
 }

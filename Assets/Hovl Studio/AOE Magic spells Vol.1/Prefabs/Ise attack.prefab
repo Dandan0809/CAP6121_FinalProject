@@ -29214,7 +29214,6 @@ GameObject:
   - component: {fileID: 4062670919104444}
   - component: {fileID: 198272446698240340}
   - component: {fileID: 199614569247414600}
-  - component: {fileID: 5828235573395216283}
   m_Layer: 0
   m_Name: Ice
   m_TagString: Untagged
@@ -32841,9 +32840,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -33017,7 +33016,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minKillSpeed: 0
     maxKillSpeed: 10000
-    radiusScale: 3
+    radiusScale: 5
     collidesWith:
       serializedVersion: 2
       m_Bits: 4294967295
@@ -34064,18 +34063,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &5828235573395216283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1886276793226606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64652fcab78217d459ba947d87b0881c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1965956805206708
 GameObject:
   m_ObjectHideFlags: 0
@@ -34089,6 +34076,8 @@ GameObject:
   - component: {fileID: 199294062749879872}
   - component: {fileID: 82794692696160056}
   - component: {fileID: 114023983230246292}
+  - component: {fileID: 3224073428499509583}
+  - component: {fileID: 8522172335654797382}
   m_Layer: 0
   m_Name: Ise attack
   m_TagString: Untagged
@@ -39115,6 +39104,39 @@ MonoBehaviour:
   RandomVolume: 0
   minVolume: 0.4
   maxVolume: 1
+--- !u!65 &3224073428499509583
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965956805206708}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11, y: 2, z: 11}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8522172335654797382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965956805206708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64652fcab78217d459ba947d87b0881c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1994824758168566
 GameObject:
   m_ObjectHideFlags: 0
