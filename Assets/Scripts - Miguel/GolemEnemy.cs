@@ -99,6 +99,10 @@ public class GolemEnemy : MonoBehaviour
             transform.position = new Vector3 (transform.position.x, 0, transform.position.z);
             animator.SetTrigger("HasLanded");
         }
+        else if (isAirborne && collision.gameObject.GetComponent<GolemEnemy>())
+        {
+            collision.gameObject.GetComponent<GolemEnemy>().OnDeath();
+        }
     }
 
     public void RePunch()

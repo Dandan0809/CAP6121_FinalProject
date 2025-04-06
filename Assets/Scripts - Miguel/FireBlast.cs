@@ -27,6 +27,22 @@ public class FireBlast : Ability
             icon.color = Color.white;
             chargeText.text = $"{currentCharges}";
         }
+
+        if (currentCharges == 0)
+        {
+            if (!cooldownDisplay.enabled)
+            {
+                cooldownDisplay.enabled = true;
+                icon.color = Color.gray;
+            }
+            cooldownDisplay.text = NextChargeCooldownTimeLeft().ToString("0.0");
+        }
+        else
+        {
+            icon.color = Color.white;
+            cooldownDisplay.text = "";
+            cooldownDisplay.enabled = false;
+        }
     }
 
     public override void OnCast()
@@ -38,10 +54,6 @@ public class FireBlast : Ability
             chargeText.text = $"{currentCharges}";
             cooldown.StartCooldown();
             rechargeQueue.Enqueue(Time.time + cooldown.TimeLeft());
-            if (currentCharges == 0)
-            {
-                StartCoroutine(UpdateSprite());
-            }
         }
     }
     public float NextChargeCooldownTimeLeft()

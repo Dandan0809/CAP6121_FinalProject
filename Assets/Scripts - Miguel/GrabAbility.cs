@@ -64,13 +64,13 @@ public class GrabAbility : Ability
                 knockbackDirection.y = 0;
 
                 // Add an upward component
-                knockbackDirection += Vector3.up * 2f;
+                knockbackDirection += Vector3.up * 1f;
 
                 // Normalize direction to maintain consistent force scaling
                 knockbackDirection.Normalize();
 
                 // Apply knockback force
-                enemyBody.AddForce(knockbackDirection * 5f, ForceMode.Impulse);
+                enemyBody.AddForce(knockbackDirection * 10f, ForceMode.Impulse);
                 StartCoroutine(enemyBody.GetComponent<GolemEnemy>().RotateTowardsTarget());
                 Destroy(enemyVFXObject);
             }
