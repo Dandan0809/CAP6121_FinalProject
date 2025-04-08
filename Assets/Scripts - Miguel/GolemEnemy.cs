@@ -143,6 +143,8 @@ public class GolemEnemy : MonoBehaviour
         if (!isDead)
         {
             isDead = true;
+            GetComponent<Rigidbody>().useGravity = false;
+            GetComponent<Collider>().enabled = false;
             animator.SetTrigger("HasDied");
             agent.enabled = false;
             enemySpawner.EnemyDied();
