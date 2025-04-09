@@ -121,18 +121,21 @@ public class GolemEnemy : MonoBehaviour
     {
         while (true)
         {
-            Vector3 direction = player.transform.position - transform.position;
-            if (direction.magnitude > 0.01f) // Prevents unnecessary updates when very close
+            if (transform != null)
             {
-                Quaternion targetRotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+                Vector3 direction = player.transform.position - transform.position;
+                if (direction.magnitude > 0.01f) // Prevents unnecessary updates when very close
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(direction);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
 
-                // Gradually move the X rotation toward 0
-                Vector3 currentEuler = transform.rotation.eulerAngles;
-                float newX = Mathf.LerpAngle(currentEuler.x, 0f, Time.deltaTime * rotationSpeed);
+                    // Gradually move the X rotation toward 0
+                    Vector3 currentEuler = transform.rotation.eulerAngles;
+                    float newX = Mathf.LerpAngle(currentEuler.x, 0f, Time.deltaTime * rotationSpeed);
 
-                // Apply new rotation with the adjusted X
-                transform.rotation = Quaternion.Euler(newX, currentEuler.y, currentEuler.z);
+                    // Apply new rotation with the adjusted X
+                    transform.rotation = Quaternion.Euler(newX, currentEuler.y, currentEuler.z);
+                }
             }
             yield return null; // Wait for the next frame
         }
