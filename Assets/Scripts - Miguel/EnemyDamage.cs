@@ -6,9 +6,9 @@ public class EnemyDamage : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<ControllerAbilityManager>())
+        if (other.GetComponent<PlayerHealth>())
         {
-            other.GetComponent<ControllerAbilityManager>().TakeDamage();
+            other.GetComponent<PlayerHealth>().TakeDamage();
         }
     }
 }

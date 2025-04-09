@@ -8,6 +8,9 @@ public class GrabAbilityGesture : Ability
     [SerializeField] private LayerMask layermask;
     private GameObject enemyVFXObject;
     public Transform hand;
+    public float delay = 0.5f;
+
+    public IceSpikeGesture spike;
 
     private bool isGesturing = false;
 
@@ -33,7 +36,7 @@ public class GrabAbilityGesture : Ability
                 if (hit.transform.gameObject.GetComponent<GolemEnemy>() && !hit.transform.gameObject.GetComponent<GolemEnemy>().isDead)
                 {
                     hit.transform.parent = hand.transform;
-                    hit.transform.up = -hand.transform.right;
+                    hit.transform.localPosition = new Vector3(hand.transform.localPosition.x, hit.transform.localPosition.y, hit.transform.localPosition.z);
                     enemyBody = hit.transform.gameObject.GetComponent<Rigidbody>();
                     enemyBody.GetComponent<GolemEnemy>().OnGrab();
                     enemyVFXObject = Instantiate(grabFX, enemyBody.transform);
@@ -57,7 +60,7 @@ public class GrabAbilityGesture : Ability
                 isGrabbing = false;
                 enemyBody.GetComponent<Rigidbody>().isKinematic = false;
                 hit.transform.parent = null;
-                Vector3 knockbackDirection = -enemyBody.transform.forward;
+                Vector3 knockbackDirection = Camera.main.transform.forward;
                 knockbackDirection.y = 0;
 
                 // Add an upward component
@@ -75,7 +78,16 @@ public class GrabAbilityGesture : Ability
         }
         cooldown.StartCooldown();
         StartCoroutine(UpdateSprite());
+        StartCoroutine(SpikeDelay());
     }
+
+    IEnumerator SpikeDelay()
+    {
+        spike.canPlace = false;
+        yield return new WaitForSeconds(delay);
+        spike.canPlace = true;
+    }
+
 
     public void EndGesture()
     {

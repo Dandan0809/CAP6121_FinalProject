@@ -12,10 +12,10 @@ public class IceSpikeGesture : Ability
 
     public Transform hand;
     private bool isGesturing = false;
-
+    public bool canPlace = true;
     public override void OnCast()
     {
-        if (!cooldown.IsCoolingDown)
+        if (!cooldown.IsCoolingDown && canPlace)
         {
             isGesturing = true;
             StartCoroutine(PlaceAbility());
