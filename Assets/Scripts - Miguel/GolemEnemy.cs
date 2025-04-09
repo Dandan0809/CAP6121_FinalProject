@@ -151,4 +151,8 @@ public class GolemEnemy : MonoBehaviour
             Destroy(gameObject, 5f);
         }
     }
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
+    }
 }
