@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7394448621234906902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1c2918ba0e7451694416d42d69e0944, type: 3}
-  m_Name: WitComposerData
-  m_EditorClassIdentifier: 
-  canvases: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23,100 +10,43 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae5a46bda3295124c99b0e6537ac7252, type: 3}
-  m_Name: wit_demo
+  m_Name: wit_spell
   m_EditorClassIdentifier: 
-  _clientAccessToken: 3FCWGANTLLZVZLIRKLYLXRPJBHHRU3DA
+  _clientAccessToken: LJ2NOFYWUETQA7AF52SMPO7AYPLWACJR
   editorVersionTag: 
   buildVersionTag: 
   _appInfo:
-    name: voice_test_changecolor
-    id: 684576850900688
+    name: cap6121
+    id: 660136259944144
     lang: en
     isPrivate: 0
-    createdAt: 2025-03-31T19:19:47-0700
+    createdAt: 2025-04-09T14:50:31-0700
     trainingStatus: 1
-    lastTrainDuration: 71
-    lastTrainedAt: 2025-04-01T17:26:39-0700
-    nextTrainAt: 2025-04-01T17:25:28-0700
+    lastTrainDuration: 15
+    lastTrainedAt: 2025-04-11T16:43:10-0700
+    nextTrainAt: 2025-04-11T16:42:55-0700
     intents:
-    - id: 1897748620764684
-      name: change_color
-      entities:
-      - name: color:color
-        id: 1849425045812945
-      - name: shape:shape
-        id: 1356525108734664
+    - id: 651835754454947
+      name: spell_cast
+      entities: []
     entities:
-    - name: color
-      id: 1577743649530999
+    - name: spell
+      id: 1204844494677722
       lookups:
-      - free-text
       - keywords
       roles:
-      - name: color
-        id: 1849425045812945
+      - name: spell
+        id: 1185816119608413
       keywords:
-      - keyword: black
+      - keyword: fire
         synonyms:
-        - black
-      - keyword: blue
+        - fire
+      - keyword: grab
         synonyms:
-        - blue
-      - keyword: blue
+        - grab
+      - keyword: ice
         synonyms:
-        - blue
-      - keyword: blue
-        synonyms:
-        - blue
-      - keyword: blue
-        synonyms:
-        - blue
-      - keyword: green
-        synonyms:
-        - green
-      - keyword: pink
-        synonyms:
-        - pink
-      - keyword: red
-        synonyms:
-        - red
-      - keyword: red
-        synonyms:
-        - red
-      - keyword: red
-        synonyms:
-        - red
-      - keyword: red
-        synonyms:
-        - red
-    - name: shape
-      id: 4133804116847336
-      lookups:
-      - free-text
-      - keywords
-      roles:
-      - name: shape
-        id: 1356525108734664
-      keywords:
-      - keyword: capsule
-        synonyms:
-        - capsule
-      - keyword: cube
-        synonyms:
-        - cube
-      - keyword: cylinder
-        synonyms:
-        - cylinder
-      - keyword: cylinder
-        synonyms:
-        - cylinder
-      - keyword: cylinder
-        synonyms:
-        - cylinder
-      - keyword: sphere
-        synonyms:
-        - ball
-        - sphere
+        - ice
     traits: []
     versionTags: []
     voices:
@@ -626,8 +556,8 @@ MonoBehaviour:
       - phoneme_events
       - word_events
   _configData:
-  - {fileID: -7394448621234906902}
-  _configurationId: 4376f1d2-8071-4931-982d-d5e3a0a3f693
+  - {fileID: 4120461496987147137}
+  _configurationId: 4c4368c2-c496-48b8-8f21-d504b7636d3c
   _requestType: 0
   _requestTimeoutMs: 10000
   endpointConfiguration:
@@ -644,8 +574,21 @@ MonoBehaviour:
   isDemoOnly: 0
   useIntentAttributes: 1
   useConduit: 1
-  _manifestLocalPath: ConduitManifest-bab6a2da-8a3a-4509-96e2-f62f29abf4d4.json
+  _manifestLocalPath: ConduitManifest-e8e69c84-2618-42f4-b7a8-2ba3aab24027.json
   excludedAssemblies:
   - Oculus.Voice.Demo, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   - Meta.WitAi.Samples, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   relaxedResolution: 0
+--- !u!114 &4120461496987147137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c2918ba0e7451694416d42d69e0944, type: 3}
+  m_Name: WitComposerData
+  m_EditorClassIdentifier: 
+  canvases: []
