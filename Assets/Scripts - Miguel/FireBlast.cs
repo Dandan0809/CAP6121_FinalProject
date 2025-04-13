@@ -8,6 +8,9 @@ public class FireBlast : Ability
     public ParticleSystem blastEffect;
     public int maxCharges = 3;
     public TextMeshProUGUI chargeText;
+    public List<GameObject> objectsInTrigger = new List<GameObject>();
+    [SerializeField] private Transform fireRay;
+
 
     private int currentCharges;
     private Queue<float> rechargeQueue = new Queue<float>();
@@ -49,6 +52,15 @@ public class FireBlast : Ability
     {
         if (currentCharges > 0)
         {
+            Transform target = FindClosestObjectToLine();
+            if (target != null)
+            {
+                blastEffect.transform.LookAt(target);
+            }
+            else
+            {
+                blastEffect.transform.rotation = fireRay.transform.rotation;
+            }
             blastEffect.Play();
             currentCharges -= 1;
             chargeText.text = $"{currentCharges}";
@@ -64,4 +76,45 @@ public class FireBlast : Ability
         float nextReadyTime = rechargeQueue.Peek();
         return Mathf.Max(0f, nextReadyTime - Time.time);
     }
+
+    public Transform FindClosestObjectToLine()
+    {
+        Transform closest = null;
+        float minDistance = Mathf.Infinity;
+
+        foreach (GameObject obj in objectsInTrigger)
+        {
+            Vector3 toPoint = obj.transform.position - fireRay.position;
+            Vector3 projection = Vector3.Project(toPoint, fireRay.forward.normalized);
+            Vector3 rejection = toPoint - projection;
+
+            float distanceToLine = rejection.magnitude;
+
+            if (distanceToLine < minDistance)
+            {
+                minDistance = distanceToLine;
+                closest = obj.transform;
+            }
+        }
+
+        return closest;
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!objectsInTrigger.Contains(other.gameObject) && other.gameObject.GetComponent<GolemEnemy>())
+        {
+            objectsInTrigger.Add(other.gameObject);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (objectsInTrigger.Contains(other.gameObject) && other.gameObject.GetComponent<GolemEnemy>() && other != null)
+        {
+            objectsInTrigger.Remove(other.gameObject);
+        }
+    }
+
 }

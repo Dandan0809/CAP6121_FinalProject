@@ -8,10 +8,10 @@ public class ControllerAbilityManager : MonoBehaviour
 {
     public InputActionReference blastAbility;
     public InputActionReference grabAbility;
-    public InputActionReference placementAbility;
+    public InputActionReference iceAbility;
 
     public Ability blast;
-    public Ability placement;
+    public Ability ice;
     public Ability grab;
 
     [SerializeField] private bool isPlacing = false;
@@ -19,7 +19,7 @@ public class ControllerAbilityManager : MonoBehaviour
     private void Start()
     {
         blastAbility.action.performed += _ => CastFireBlast();
-        placementAbility.action.performed += _ => CastPlacement();
+        iceAbility.action.performed += _ => CastPlacement();
         grabAbility.action.performed += _ => CastGrab();
     }
 
@@ -31,9 +31,9 @@ public class ControllerAbilityManager : MonoBehaviour
 
     public void CastPlacement()
     {
-        if (!isPlacing && !placement.cooldown.IsCoolingDown)
+        if (!isPlacing && !ice.cooldown.IsCoolingDown)
         {
-            placement.OnCast();
+            ice.OnCast();
             UpdatePlacement();
         }
     }

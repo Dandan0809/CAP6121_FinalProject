@@ -687,7 +687,7 @@
                     "name": "Select",
                     "type": "Button",
                     "id": "33754c03-48ec-46ef-9bc6-22ed6bfdd8e8",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -1239,6 +1239,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Fire Blast",
+                    "type": "Button",
+                    "id": "02227374-7b65-47b5-9c68-6878f2d581f0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Ice Spikes",
+                    "type": "Button",
+                    "id": "523778e8-de89-44b3-8d25-bcfca9df7cc7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Grab",
+                    "type": "Button",
+                    "id": "832ca8a6-7bb2-4053-b690-2042f73fd450",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1472,6 +1499,39 @@
                     "action": "Grip Rotation",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e6269f7c-41f5-49ec-a691-12b453903345",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire Blast",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5481633e-ebc3-4530-85d3-9f44a168969d",
+                    "path": "<XRController>{RightHand}/{SecondaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Ice Spikes",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b43d20dd-57c4-488f-bc93-3b1878b568f6",
+                    "path": "<XRController>{RightHand}/{PrimaryTrigger}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -1564,7 +1624,7 @@
                     "name": "Scale Toggle",
                     "type": "Button",
                     "id": "5ad73d15-99a4-4bce-a76f-f49815602416",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -1577,33 +1637,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "FireBlast",
-                    "type": "Button",
-                    "id": "390d5881-6a1e-4755-9422-8177ac5b501b",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Ice Spikes",
-                    "type": "Button",
-                    "id": "cf6b2a58-08a3-4913-8c09-88e7ff7e8eb7",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Grab Ability",
-                    "type": "Button",
-                    "id": "5c9e6f0d-01ed-4a3e-9be2-26d42ec46017",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1769,39 +1802,6 @@
                     "processors": "ScaleVector2(x=0),StickDeadzone",
                     "groups": "Generic XR Controller",
                     "action": "Scale Delta",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d4e4045c-2aad-483c-9232-f069407bf629",
-                    "path": "<XRController>{RightHand}/{PrimaryButton}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "FireBlast",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f568d269-9e97-4f4f-8b95-fc9c4d9448d1",
-                    "path": "<XRController>{RightHand}/{SecondaryButton}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Ice Spikes",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d1947fde-be89-4e59-bf0f-491db65f78cc",
-                    "path": "<XRController>{RightHand}/{TriggerButton}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Grab Ability",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

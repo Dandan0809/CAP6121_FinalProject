@@ -367,6 +367,37 @@ Transform:
   - {fileID: 752974845}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &164781002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 164781003}
+  m_Layer: 2
+  m_Name: FireRay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &164781003
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164781002}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.546}
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 531812726}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &228881784
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,7 +845,8 @@ GameObject:
   - component: {fileID: 531812726}
   - component: {fileID: 531812729}
   - component: {fileID: 531812728}
-  - component: {fileID: 531812727}
+  - component: {fileID: 531812730}
+  - component: {fileID: 531812731}
   m_Layer: 2
   m_Name: Sphere
   m_TagString: Untagged
@@ -836,29 +868,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4390806486423170}
+  - {fileID: 164781003}
   m_Father: {fileID: 2096320632}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &531812727
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 531812725}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &531812728
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -909,6 +921,44 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 531812725}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &531812730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531812725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 544e52e7528d39543a55e8259cace9bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_angle: 5.5
+  m_distance: 250.04
+  m_isTrigger: 1
+  m_isFixScale: 0
+--- !u!114 &531812731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531812725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 758479af03588184c91a6119b0b047f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown:
+    cooldownTime: 6
+  manaCost: 0
+  icon: {fileID: 600895544}
+  cooldownDisplay: {fileID: 75623944}
+  blastEffect: {fileID: 198174952873219226}
+  maxCharges: 3
+  chargeText: {fileID: 996485766}
+  objectsInTrigger: []
+  fireRay: {fileID: 164781003}
 --- !u!1 &600895542
 GameObject:
   m_ObjectHideFlags: 0
@@ -3467,7 +3517,6 @@ GameObject:
   - component: {fileID: 1921325914}
   - component: {fileID: 1921325917}
   - component: {fileID: 1921325916}
-  - component: {fileID: 1921325915}
   m_Layer: 2
   m_Name: Sphere
   m_TagString: Untagged
@@ -3490,27 +3539,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1833249498}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1921325915
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1921325913}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1921325916
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3602,7 +3630,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2027922583}
   - component: {fileID: 2027922585}
-  - component: {fileID: 2027922584}
   - component: {fileID: 2027922586}
   - component: {fileID: 2027922587}
   - component: {fileID: 2027922588}
@@ -3629,26 +3656,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1285049375}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2027922584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2027922582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 758479af03588184c91a6119b0b047f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cooldown:
-    cooldownTime: 6
-  manaCost: 0
-  icon: {fileID: 600895544}
-  cooldownDisplay: {fileID: 75623944}
-  blastEffect: {fileID: 198174952873219226}
-  maxCharges: 3
-  chargeText: {fileID: 996485766}
 --- !u!114 &2027922585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3661,11 +3668,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74ea8412c5e8d3a46915eef572fd3806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blastAbility: {fileID: -5220241439376577480, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  grabAbility: {fileID: -5640710623331263274, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  placementAbility: {fileID: -7413917333220501941, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  blast: {fileID: 2027922584}
-  placement: {fileID: 2027922586}
+  blastAbility: {fileID: -5230660759095963721, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  grabAbility: {fileID: 7804464158822950573, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  iceAbility: {fileID: -985294316923201822, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  blast: {fileID: 531812731}
+  ice: {fileID: 2027922586}
   grab: {fileID: 2027922587}
   isPlacing: 0
 --- !u!114 &2027922586
@@ -3690,7 +3697,7 @@ MonoBehaviour:
   layermask:
     serializedVersion: 2
     m_Bits: 128
-  placementAbility: {fileID: -5220241439376577480, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  placementAbility: {fileID: -5230660759095963721, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   hand: {fileID: 531812726}
 --- !u!114 &2027922587
 MonoBehaviour:
@@ -3713,7 +3720,7 @@ MonoBehaviour:
   layermask:
     serializedVersion: 2
     m_Bits: 4294967295
-  placementAbility: {fileID: -5220241439376577480, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  placementAbility: {fileID: -5230660759095963721, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   hand: {fileID: 531812726}
 --- !u!65 &2027922588
 BoxCollider:
