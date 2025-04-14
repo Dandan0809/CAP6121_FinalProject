@@ -16,6 +16,7 @@ public class GolemEnemy : MonoBehaviour
     private Animator animator;
     private bool isAirborne = false;
     public bool isDead = false;
+    public Transform targetLocation;
 
     private EnemySpawner enemySpawner;
     private enum State

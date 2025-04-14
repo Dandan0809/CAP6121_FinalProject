@@ -84,6 +84,7 @@ public class FireBlast : Ability
 
         foreach (GameObject obj in objectsInTrigger)
         {
+            if (obj == null) continue;
             Vector3 toPoint = obj.transform.position - fireRay.position;
             Vector3 projection = Vector3.Project(toPoint, fireRay.forward.normalized);
             Vector3 rejection = toPoint - projection;
@@ -96,8 +97,11 @@ public class FireBlast : Ability
                 closest = obj.transform;
             }
         }
-
-        return closest;
+        if (closest != null)
+        {
+            return closest.GetComponent<GolemEnemy>().targetLocation;
+        }
+        return null;
     }
 
 

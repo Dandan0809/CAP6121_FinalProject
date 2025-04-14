@@ -12,7 +12,7 @@ public class ControllerAbilityManager : MonoBehaviour
 
     public Ability blast;
     public Ability ice;
-    public Ability grab;
+    public GrabAbility grab;
 
     [SerializeField] private bool isPlacing = false;
 
@@ -21,6 +21,7 @@ public class ControllerAbilityManager : MonoBehaviour
         blastAbility.action.performed += _ => CastFireBlast();
         iceAbility.action.performed += _ => CastPlacement();
         grabAbility.action.performed += _ => CastGrab();
+
     }
 
     public void CastFireBlast()
@@ -42,6 +43,7 @@ public class ControllerAbilityManager : MonoBehaviour
     {
         if (!isPlacing && !grab.cooldown.IsCoolingDown)
         {
+            UpdatePlacement();
             grab.OnCast();
         }
     }

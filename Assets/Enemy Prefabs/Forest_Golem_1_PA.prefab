@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &954728582140039815
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5134528661936648237}
+  m_Layer: 0
+  m_Name: Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5134528661936648237
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954728582140039815}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.92, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5859373845442982389}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5859373845442587429
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -78,7 +109,10 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a16a33f286846c24e982be4ee7a66ce4, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 400080, guid: 4a36c659010ba3f47a0a9ba312712507, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5134528661936648237}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 100080, guid: 4a36c659010ba3f47a0a9ba312712507, type: 3}
       insertIndex: -1
@@ -203,6 +237,7 @@ MonoBehaviour:
   rotationSpeed: 4
   attackRange: 1.5
   isDead: 0
+  targetLocation: {fileID: 5134528661936648237}
   state: 0
 --- !u!54 &2598853471966511620
 Rigidbody:
@@ -252,3 +287,8 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.056273, y: 3.5367684, z: 1}
   m_Center: {x: 0.07798529, y: 1.8342276, z: 0}
+--- !u!4 &5859373845442982389 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400080, guid: 4a36c659010ba3f47a0a9ba312712507, type: 3}
+  m_PrefabInstance: {fileID: 5859373845442587429}
+  m_PrefabAsset: {fileID: 0}

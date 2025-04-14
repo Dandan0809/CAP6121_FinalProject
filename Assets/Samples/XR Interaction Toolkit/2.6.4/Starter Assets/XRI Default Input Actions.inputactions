@@ -687,7 +687,7 @@
                     "name": "Select",
                     "type": "Button",
                     "id": "33754c03-48ec-46ef-9bc6-22ed6bfdd8e8",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -1013,7 +1013,7 @@
                     "name": "Grab Move",
                     "type": "Button",
                     "id": "c5a6d766-d487-42ae-b293-da4749469e18",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -1266,6 +1266,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "New Grab",
+                    "type": "Value",
+                    "id": "36ab46cb-de7b-4fd2-bbea-cfc01e815e79",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -1525,11 +1534,22 @@
                 {
                     "name": "",
                     "id": "b43d20dd-57c4-488f-bc93-3b1878b568f6",
-                    "path": "<XRController>{RightHand}/{PrimaryTrigger}",
-                    "interactions": "",
+                    "path": "<XRController>{RightHand}/{TriggerButton}",
+                    "interactions": "Hold",
                     "processors": "",
                     "groups": "",
                     "action": "Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "610da903-3426-4da9-9f73-03e2015c8afa",
+                    "path": "<XRController>{RightHand}/trigger ",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New Grab",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -1869,7 +1889,7 @@
                     "name": "Grab Move",
                     "type": "Button",
                     "id": "cfb29d37-3db0-4e5d-a73b-7d48a19e279e",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false

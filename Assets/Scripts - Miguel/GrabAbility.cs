@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -6,14 +7,15 @@ using UnityEngine.InputSystem;
 
 public class GrabAbility : Ability
 {
+    [SerializeField] private GameObject laserFX;
     [SerializeField] private GameObject grabFX;
     [SerializeField] private LayerMask layermask;
+
     private GameObject enemyVFXObject;
 
     public InputActionReference grabbing;
     public InputActionReference release;
     public Transform hand;
-    private bool isGrabbing = false;
 
     private ControllerAbilityManager controllerAbilityManager;
     // Start is called before the first frame update
@@ -21,22 +23,20 @@ public class GrabAbility : Ability
     private void Start()
     {
         controllerAbilityManager = FindAnyObjectByType<ControllerAbilityManager>();
-        grabbing.action.canceled += _ => ReleaseGrab();
-
     }
+
 
     public override void OnCast()
     {
         StartCoroutine(PlaceAbility());
-        isGrabbing = true;
     }
 
     private IEnumerator PlaceAbility()
     {
-        controllerAbilityManager.UpdatePlacement();
+        laserFX.SetActive(true);
         RaycastHit hit = new RaycastHit();
         Rigidbody enemyBody = null;
-        while (isGrabbing)
+        while (grabbing.action.ReadValue<float>() > 0.4)
         {
             if (Physics.Raycast(hand.position, hand.forward, out hit, 15, layermask))
             {
@@ -53,43 +53,22 @@ public class GrabAbility : Ability
             yield return null;
         }
 
-        if (!isGrabbing && enemyBody == null)
+        if (enemyBody == null)
         {
             controllerAbilityManager.UpdatePlacement();
+            laserFX.SetActive(false);
             yield break;
         }
-
-        //RaycastHit hit;
-        //Rigidbody enemyBody;
-        //if (Physics.Raycast(hand.position, hand.forward, out hit, 15, layermask))
-        //{
-        //    if (hit.transform.gameObject.GetComponent<GolemEnemy>() && !hit.transform.gameObject.GetComponent<GolemEnemy>().isDead)
-        //    {
-        //        hit.transform.parent = hand.transform;
-        //        enemyBody = hit.transform.gameObject.GetComponent<Rigidbody>();
-        //        controllerAbilityManager.UpdatePlacement();
-        //        enemyBody.GetComponent<GolemEnemy>().OnGrab();
-        //        enemyVFXObject = Instantiate(grabFX, enemyBody.transform);
-        //    }
-        //    else
-        //    {
-        //        yield break;
-        //    }
-        //}
-        //else
-        //{
-        //    yield break;
-        //}
 
         bool isHolding = true;
 
         while (isHolding)
         {
-            if (release.action.WasPerformedThisFrame())
+            if (release.action.WasPressedThisFrame())
             {
-                isGrabbing = false;
-                hit.transform.GetComponent<Rigidbody>().isKinematic = false;
+                isHolding = false;
                 hit.transform.parent = null;
+                hit.transform.GetComponent<Rigidbody>().isKinematic = false;
                 Vector3 knockbackDirection = -enemyBody.transform.forward;
                 knockbackDirection.y = 0;
 
@@ -103,16 +82,12 @@ public class GrabAbility : Ability
                 enemyBody.AddForce(knockbackDirection * 10f, ForceMode.Impulse);
                 StartCoroutine(enemyBody.GetComponent<GolemEnemy>().RotateTowardsTarget());
                 Destroy(enemyVFXObject);
+                laserFX.SetActive(false);
             }
             yield return null;
         }
         controllerAbilityManager.UpdatePlacement();
         cooldown.StartCooldown();
         StartCoroutine(UpdateSprite());
-    }
-
-    private void ReleaseGrab()
-    {
-        isGrabbing = false;
     }
 }
