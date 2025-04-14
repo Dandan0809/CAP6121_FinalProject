@@ -85,6 +85,7 @@ public class FireBlast : Ability
         foreach (GameObject obj in objectsInTrigger)
         {
             if (obj == null) continue;
+            if (obj.GetComponent<GolemEnemy>().isDead) continue;
             Vector3 toPoint = obj.transform.position - fireRay.position;
             Vector3 projection = Vector3.Project(toPoint, fireRay.forward.normalized);
             Vector3 rejection = toPoint - projection;
