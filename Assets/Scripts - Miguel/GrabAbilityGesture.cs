@@ -6,6 +6,9 @@ public class GrabAbilityGesture : Ability
 {
     [SerializeField] private GameObject grabFX;
     [SerializeField] private LayerMask layermask;
+    [SerializeField] private GameObject laserFX;
+    [SerializeField] private Transform fireBlastCone;
+
     private GameObject enemyVFXObject;
     public Transform hand;
     public float delay = 0.5f;
@@ -29,6 +32,8 @@ public class GrabAbilityGesture : Ability
     {
         RaycastHit hit = new RaycastHit();
         Rigidbody enemyBody = null;
+        fireBlastCone.position = new Vector3(fireBlastCone.position.x, fireBlastCone.position.y + 10, fireBlastCone.position.z);
+        laserFX.SetActive(true);
         while (isGesturing)
         {
             if (Physics.Raycast(hand.position, hand.forward, out hit, 15, layermask))
@@ -48,6 +53,8 @@ public class GrabAbilityGesture : Ability
 
         if (!isGesturing && enemyBody == null)
         {
+            laserFX.SetActive(false);
+            fireBlastCone.position = new Vector3(fireBlastCone.position.x, fireBlastCone.position.y - 10, fireBlastCone.position.z);
             yield break;
         }
 
@@ -76,6 +83,8 @@ public class GrabAbilityGesture : Ability
             }
             yield return null;
         }
+        laserFX.SetActive(false);
+        fireBlastCone.position = new Vector3(fireBlastCone.position.x, fireBlastCone.position.y - 10, fireBlastCone.position.z);
         cooldown.StartCooldown();
         StartCoroutine(UpdateSprite());
         StartCoroutine(SpikeDelay());

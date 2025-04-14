@@ -138,6 +138,10 @@ public class GolemEnemy : MonoBehaviour
                     transform.rotation = Quaternion.Euler(newX, currentEuler.y, currentEuler.z);
                 }
             }
+            else
+            {
+                yield break;
+            }
             yield return null; // Wait for the next frame
         }
     }
