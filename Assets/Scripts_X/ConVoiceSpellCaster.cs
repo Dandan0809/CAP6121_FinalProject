@@ -1,12 +1,13 @@
 using UnityEngine;
 using Meta.WitAi;
 using Meta.WitAi.Events;
+using System;
 
 public class ConVoiceSpellCaster : MonoBehaviour
 {
     public Ability fireBlast;
     public Ability iceSpike;
-    public GrabAbility grabAbility;
+    public Ability grabAbility;
 
     [Header("Wit")]
     [SerializeField] private VoiceService voiceService;
@@ -57,21 +58,31 @@ public class ConVoiceSpellCaster : MonoBehaviour
         switch (keyword)
         {
             case "fire":
-                if (fireBlast != null)
+                Debug.Log(!isPlacing);
+                if (fireBlast != null && !isPlacing)
                     fireBlast.OnCast();
                 else
                     Debug.LogWarning("FireBlast reference is missing!");
                 break;
 
             case "ice":
-                if (iceSpike != null)
+                if (iceSpike != null && !isPlacing)
+                {
+                    UpdatePlacement();
                     iceSpike.OnCast();
+                }
                 else
                     Debug.LogWarning("IceSpike reference is missing!");
                 break;
 
             case "grab":
-                CastGrab();
+                if (grabAbility != null && !isPlacing)
+                {
+                    UpdatePlacement();
+                    grabAbility.OnCast();
+                }
+                else
+                    Debug.LogWarning("GrabAbility reference is missing!");
                 break;
 
             default:
@@ -80,23 +91,7 @@ public class ConVoiceSpellCaster : MonoBehaviour
         }
     }
 
-    private void CastGrab()
-    {
-        if (grabAbility != null)
-        {
-            if (!isPlacing && !grabAbility.cooldown.IsCoolingDown)
-            {
-                UpdatePlacement();
-                grabAbility.OnCast();
-            }
-        }
-        else
-        {
-            Debug.LogWarning("GrabAbility reference is missing!");
-        }
-    }
-
-    private void UpdatePlacement()
+    public void UpdatePlacement()
     {
         isPlacing = !isPlacing;
     }

@@ -4371,7 +4371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireBlast: {fileID: 531812731}
   iceSpike: {fileID: 2027922586}
-  grabAbility: {fileID: 2027922587}
+  grabAbility: {fileID: 2027922590}
   voiceService: {fileID: 2037606123}
   logTranscript: 1
 --- !u!1 &2027922582
@@ -4383,11 +4383,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2027922583}
-  - component: {fileID: 2027922585}
   - component: {fileID: 2027922586}
   - component: {fileID: 2027922587}
   - component: {fileID: 2027922588}
   - component: {fileID: 2027922589}
+  - component: {fileID: 2027922590}
   m_Layer: 0
   m_Name: Ability Manager
   m_TagString: Untagged
@@ -4410,25 +4410,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1285049375}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2027922585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2027922582}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74ea8412c5e8d3a46915eef572fd3806, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blastAbility: {fileID: -5230660759095963721, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  grabAbility: {fileID: 7804464158822950573, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  iceAbility: {fileID: -985294316923201822, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  blast: {fileID: 531812731}
-  ice: {fileID: 2027922586}
-  grab: {fileID: 2027922587}
-  isPlacing: 0
 --- !u!114 &2027922586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4460,7 +4441,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2027922582}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be2b675e6361362498d16c0e02681708, type: 3}
   m_Name: 
@@ -4517,6 +4498,30 @@ MonoBehaviour:
   - {fileID: 1455710660}
   - {fileID: 1542913236}
   enemySpawner: {fileID: 919591997}
+--- !u!114 &2027922590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027922582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc74b2cb2436e67439d13608f84debb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown:
+    cooldownTime: 10
+  manaCost: 0
+  icon: {fileID: 1621411524}
+  cooldownDisplay: {fileID: 1529289246}
+  laserFX: {fileID: 406771270}
+  grabFX: {fileID: 1289543790355709915, guid: 1aeebc3333808d645acd569082564e2c, type: 3}
+  layermask:
+    serializedVersion: 2
+    m_Bits: 512
+  grabbing: {fileID: -5230660759095963721, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  hand: {fileID: 531812726}
 --- !u!1 &2037606121
 GameObject:
   m_ObjectHideFlags: 0

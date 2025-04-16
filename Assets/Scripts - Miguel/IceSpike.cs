@@ -14,16 +14,21 @@ public class IceSpike : Ability
     public Transform hand;
 
     private ControllerAbilityManager controllerAbilityManager;
+    private ConVoiceSpellCaster conVoiceSpellCaster;
     // Start is called before the first frame update
 
     private void Start()
     {
         controllerAbilityManager = FindAnyObjectByType<ControllerAbilityManager>();
+        conVoiceSpellCaster = FindAnyObjectByType<ConVoiceSpellCaster>();
     }
 
     public override void OnCast()
     {
-        StartCoroutine(PlaceAbility());
+        if (!cooldown.IsCoolingDown)
+        {
+            StartCoroutine(PlaceAbility());
+        }
     }
 
     private IEnumerator PlaceAbility()
@@ -70,7 +75,14 @@ public class IceSpike : Ability
             }
             yield return null;
         }
-        controllerAbilityManager.UpdatePlacement();
+        if (controllerAbilityManager != null)
+        {
+            controllerAbilityManager.UpdatePlacement();
+        }
+        else if (conVoiceSpellCaster != null)
+        {
+            conVoiceSpellCaster.UpdatePlacement();
+        }
         cooldown.StartCooldown();
         StartCoroutine(UpdateSprite());
     }
