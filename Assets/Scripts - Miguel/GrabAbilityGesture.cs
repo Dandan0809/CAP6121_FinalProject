@@ -71,7 +71,7 @@ public class GrabAbilityGesture : Ability
                 knockbackDirection.y = 0;
 
                 // Add an upward component
-                knockbackDirection += Vector3.up * 1f;
+                knockbackDirection += Vector3.up * 0.3f;
 
                 // Normalize direction to maintain consistent force scaling
                 knockbackDirection.Normalize();
