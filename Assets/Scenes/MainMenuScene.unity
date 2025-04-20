@@ -567,7 +567,7 @@ MonoBehaviour:
   normalStyle: 0
   selectedStyle: 5
   normalColor: {r: 1, g: 1, b: 1, a: 1}
-  selectedColor: {r: 1, g: 0.55, b: 0, a: 1}
+  selectedColor: {r: 0.627451, g: 0.1254902, b: 0.1254902, a: 1}
   modeName: Controller
 --- !u!1 &63893655
 GameObject:
@@ -655,6 +655,7 @@ GameObject:
   m_Component:
   - component: {fileID: 97352587}
   - component: {fileID: 97352586}
+  - component: {fileID: 97352588}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -773,6 +774,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &97352588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97352585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22217354b4f9f1f468c2e97ad38c9633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &97824874 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9051238300485817969, guid: 2f6c4572e07a60b43b00e1c4f489a806, type: 3}
@@ -5279,7 +5292,7 @@ MonoBehaviour:
   normalStyle: 0
   selectedStyle: 5
   normalColor: {r: 1, g: 1, b: 1, a: 1}
-  selectedColor: {r: 1, g: 0.55, b: 0, a: 1}
+  selectedColor: {r: 0.627451, g: 0.1254902, b: 0.1254902, a: 1}
   modeName: Hand
 --- !u!114 &862254293
 MonoBehaviour:
@@ -7153,7 +7166,7 @@ MonoBehaviour:
   normalStyle: 0
   selectedStyle: 5
   normalColor: {r: 1, g: 1, b: 1, a: 1}
-  selectedColor: {r: 1, g: 0.55, b: 0, a: 1}
+  selectedColor: {r: 0.627451, g: 0.1254902, b: 0.1254902, a: 1}
   modeName: Multi
 --- !u!114 &1435431583
 MonoBehaviour:
@@ -10011,7 +10024,7 @@ MonoBehaviour:
   normalStyle: 0
   selectedStyle: 5
   normalColor: {r: 1, g: 1, b: 1, a: 1}
-  selectedColor: {r: 1, g: 0.55, b: 0, a: 1}
+  selectedColor: {r: 0.627451, g: 0.1254902, b: 0.1254902, a: 1}
   modeName: Multi
 --- !u!1 &2111300139
 GameObject:
